@@ -10,12 +10,17 @@ import { updateRecord } from 'lightning/uiRecordApi';
 import ID_FIELD from "@salesforce/schema/Quote__c.Id";
 import START_DATE from "@salesforce/schema/Quote__c.Start_Date__c";
 import END_DATE from "@salesforce/schema/Quote__c.EndDate__c";
+import TOAST_MESSAGE from '@salesforce/label/c.Toast_Message';
 
 export default class EditQuote extends LightningElement {
   @api recordId;
   error;
   startDate;
   endDate;
+
+  label = {
+    TOAST_MESSAGE,
+  };
 
   quoteData = {
     name: "",
@@ -24,6 +29,7 @@ export default class EditQuote extends LightningElement {
     endDate: ""
   };
 
+  //Wire servove to detch the data from Controller
   @wire(GET_QUOTES, { quoteId: '$recordId' })
   wiredData({ error, data }) {
     if (data) {
@@ -35,6 +41,7 @@ export default class EditQuote extends LightningElement {
     }
   }
 
+  //Date change handler
   handleChange(event) {
     if (event.target.name == "startDate") {
       this.startDate = event.target.value;
@@ -43,8 +50,8 @@ export default class EditQuote extends LightningElement {
     }
   }
 
+  //Save handler for Date changed
   handleSave() {
-
     let fields = {};
     fields[ID_FIELD.fieldApiName] = this.recordId;
     fields[START_DATE.fieldApiName] = this.startDate;
@@ -54,8 +61,8 @@ export default class EditQuote extends LightningElement {
     updateRecord(recordInput)
       .then(() => {
         const evt = new ShowToastEvent({
-          title: "Quote updated",
-          message: "Record Successfully Updated",
+          title: "Success!",
+          message: this.label.TOAST_MESSAGE,
           variant: "success"
         });
         this.dispatchEvent(evt);

@@ -1,8 +1,8 @@
 <!-- Edit Quote Page -->
 <template>
   <div class="slds-tabs_card">
-    <c-quote-total-summary record-id={recordId}></c-quote-total-summary>
-    <div class="slds-m-around_medium">
+    <c-quote-total-summary onopenmodal={handleOpenModal}></c-quote-total-summary>
+    <div class="slds-var-m-around_medium">
       <c-edit-quote record-id={recordId}></c-edit-quote>
     </div>
   </div>

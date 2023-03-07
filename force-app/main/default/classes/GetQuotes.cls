@@ -1,4 +1,4 @@
-public class GetQuotes {
+public with sharing class GetQuotes {
     
     @AuraEnabled(cacheable=true)
     public static QuoteDto getQuotesRecords(String quoteId){
@@ -14,5 +14,5 @@ public class GetQuotes {
         throw new AuraHandledException(ex.getMessage());
     }
     return quoteObj;
-}
+    }
 }

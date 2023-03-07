@@ -1,0 +1,14 @@
+<template>
+    <lightning-modal-header label={label}></lightning-modal-header>
+    <lightning-modal-body>
+        <lightning-input type="number" step=".01" value="" lwc:ref="adjustedAmountValue" formatter="currency" name="adjustedAmountValue" 
+        label="Adjusted Amount">
+        </lightning-input>
+    </lightning-modal-body>
+    <lightning-modal-footer>
+        <div class="slds-var-m-top_medium">
+            <lightning-button label="Cancel" class="slds-var-m-right_x-small"  onclick={handleCloseClick} type="button"></lightning-button>
+            <lightning-button label="Save" onclick={handleSaveClick} variant="brand" type="button"></lightning-button>
+        </div>
+    </lightning-modal-footer>
+</template>
