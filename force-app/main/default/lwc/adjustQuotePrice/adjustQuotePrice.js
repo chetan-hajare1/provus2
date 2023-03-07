@@ -1,11 +1,16 @@
-/*
- * Provus Services Quoting
- * Copyright (c) 2023 Provus Inc. All rights reserved.
- */
+import { api } from 'lwc';
+import LightningModal from 'lightning/modal';
 
-import { LightningElement } from "lwc";
 
-export default class AdjustQuotePrice extends LightningElement {
-  adjustedAmountLabel = "Adjusted Amount";
-  adjustedAmount = 0;
+
+export default class adjustQuotePrice extends LightningModal {
+    @api label
+    //Save Handler
+    handleSaveClick() {
+       this.close(this.refs.adjustedAmountValue.value);  
+    }
+    //Modal Close Handler
+    handleCloseClick() {
+        this.close();
+    }
 }

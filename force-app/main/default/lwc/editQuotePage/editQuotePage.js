@@ -4,7 +4,7 @@
  */
 
 import { LightningElement, api } from "lwc";
-import lightningModalLWC from 'c/quoteModal';
+import POPUP_MODAL from 'c/adjustQuotePrice';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { updateRecord } from 'lightning/uiRecordApi';
 import ID_FIELD from "@salesforce/schema/Quote__c.Id";
@@ -22,7 +22,7 @@ export default class EditQuotePage extends LightningElement {
 
   //Open Adjust Amount Modal
   async handleOpenModal() {
-    const result = await lightningModalLWC.open({
+    const result = await POPUP_MODAL.open({
       label: this.label.MODAL_LABEL,
       size: 'small',
       description: 'Quote modal to adjust the price',
